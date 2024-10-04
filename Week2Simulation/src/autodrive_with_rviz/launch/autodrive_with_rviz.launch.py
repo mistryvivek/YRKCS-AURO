@@ -99,3 +99,17 @@ def generate_launch_description():
     ld.add_entity(autodrive_node)
 
     return ld
+
+# What we can learn from this:
+# We can just take pre-existing configs using this:
+# from launch.launch_description_sources import PythonLaunchDescriptionSource
+#
+# then get the path of the launch file using:
+# turtlebot3_gazebo = os.path.join(get_package_share_directory('turtlebot3_gazebo'), 'launch')
+#
+# then get include the launch description that is already made using
+# rviz = IncludeLaunchDescription(
+#      PythonLaunchDescriptionSource(
+#           os.path.join(turtlebot3_bringup, 'rviz2.launch.py')
+#       )
+#   )
