@@ -1,0 +1,39 @@
+interface IOperations {
+	cmd_vel ( msg : Twist )
+}
+
+interface IEvents {
+	event scan : Seq( real )
+}
+
+robotic platform TurtleBot3 {
+	uses IEvents provides IOperations }
+
+record Twist { linear : Vector3 angular : Vector3 } record Vector3 { x : real y : real z : real } controller MovementController {
+	requires IOperations stm MoveForwardThenRotate {
+		requires IOperations initial i0
+		state MoveForwards {
+			entry cmd_vel ( Twist (| linear = Vector3 (| x = 1 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 0 |) |) ) ; # C
+		}
+		state Rotate {
+			entry cmd_vel ( Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 1 , y = 0 , z = 0 |) |) ) ; # C
+		}
+	transition t0 {
+			from i0
+			to MoveForwards
+		}
+		transition t1 {
+			from MoveForwards
+			to Rotate
+			condition since ( C ) >= 5
+		}
+		transition t2 {
+			from Rotate
+			to MoveForwards
+			condition since ( C ) >= 5
+		}
+		clock C
+	}
+
+}
+
