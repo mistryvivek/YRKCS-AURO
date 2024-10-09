@@ -16,7 +16,7 @@ record Twist { linear : Vector3 angular : Vector3 } record Vector3 { x : real y 
 			entry cmd_vel ( Twist (| linear = Vector3 (| x = 1 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 0 |) |) ) ; # C
 		}
 		state Rotate {
-			entry cmd_vel ( Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 1 , y = 0 , z = 0 |) |) ) ; # C
+			entry cmd_vel ( Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 1.5 |) |) ) ; # C
 		}
 	transition t0 {
 			from i0
@@ -32,6 +32,49 @@ record Twist { linear : Vector3 angular : Vector3 } record Vector3 { x : real y 
 			to MoveForwards
 			condition since ( C ) >= 5
 		}
+		clock C
+	}
+
+}
+
+controller MovementRandomController {
+	requires IOperations stm MoveForwardRandomThenRotate {
+		requires IOperations var RandomTime : real
+		initial i0
+		state MoveForwards {
+			entry cmd_vel ( Twist (| linear = Vector3 (| x = 1 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 0 |) |) ) ; # C
+		}
+		state Rotate {
+			entry cmd_vel ( Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 1.5 |) |) ) ; # C
+		}
+		clock C
+	transition t0 {
+			from MoveForwards
+			to Rotate
+			condition since ( C ) >= RandomTime
+		}
+		transition t1 {
+			from Rotate
+			to MoveForwards
+			condition since ( C ) >= 5
+		}
+		transition t2 {
+			from i0
+			to MoveForwards
+		}
+	}
+
+}
+
+module WeekThree {
+	rref rp_ref0 = TurtleBot3
+	cref ctrl_ref0 = MovementController
+cref ctrl_ref1 = MovementRandomController
+}
+
+controller MovementRandomController {
+	requires IOperations stm MoveForwardThenRotateIntelligently {
+		requires IOperations initial i0
 		clock C
 	}
 
