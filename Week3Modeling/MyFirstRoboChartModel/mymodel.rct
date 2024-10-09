@@ -1,0 +1,44 @@
+interface Movement1 {
+	move ( lv : real , av : real )
+}
+
+interface Sensor1 {
+	event Obstacle
+}
+
+robotic platform MyPlatform {
+	uses Sensor1 provides Movement1 }
+
+controller MyController {
+	uses Sensor1 requires Movement1 stm MyStateMachine {
+		uses Sensor1 requires Movement1 initial i0
+		state Moving {
+			entry move ( 10 , 10 )
+		}
+		state Turning {
+		}
+		transition t0 {
+			from i0
+			to Moving
+		}
+		transition t1 {
+			from Moving
+			to Turning
+			trigger Obstacle
+		}
+		transition t2 {
+			from Turning
+			to Moving
+			condition sinceEntry ( Turning ) >= 180 / 30
+		}
+	}
+
+	connection MyController on Obstacle to MyStateMachine on Obstacle
+}
+
+module Main {
+	connection rp_ref0 on Obstacle to ctrl_ref0 on Obstacle ( _async )
+	rref rp_ref0 = MyPlatform
+	cref ctrl_ref0 = MyController
+}
+
