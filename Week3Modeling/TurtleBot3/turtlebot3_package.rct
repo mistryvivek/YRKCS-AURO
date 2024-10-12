@@ -76,6 +76,25 @@ controller MovementRandomController {
 	requires IOperations stm MoveForwardThenRotateIntelligently {
 		requires IOperations initial i0
 		clock C
+	state MoveForward {
+		entry cmd_vel(Twist(|linear = Vector3(|x = 1, y = 0, z = 0|), angular = Vector3(|x = 0, y = 0, z = 0|)|)); #C
+		}
+		state MoveLeft {
+		}
+		state MoveRight {
+		}
+	var RandomTime : real
+		event scan : Seq( real )
+		junction j0
+		transition t0 {
+			from MoveForward
+			to j0
+			condition since ( C ) >= 5
+		}
+		transition t1 {
+			from j0
+			to MoveRight
+		}
 	}
 
 }
