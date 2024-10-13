@@ -72,28 +72,51 @@ module WeekThree {
 cref ctrl_ref1 = MovementRandomController
 }
 
-controller MovementRandomController {
+controller MovementRandomAndIntelligently {
 	requires IOperations stm MoveForwardThenRotateIntelligently {
 		requires IOperations initial i0
 		clock C
 	state MoveForward {
-		entry cmd_vel(Twist(|linear = Vector3(|x = 1, y = 0, z = 0|), angular = Vector3(|x = 0, y = 0, z = 0|)|)); #C
+			entry cmd_vel ( Twist (| linear = Vector3 (| x = 1 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 0 |) |) ) ; scan ? scanresult ; # C
 		}
 		state MoveLeft {
+			entry cmd_vel ( Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = - 1.5 |) |) ) ; # C
 		}
 		state MoveRight {
+			entry cmd_vel ( Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 1.5 |) |) ) ; # C
 		}
-	var RandomTime : real
+		var RandomTime : real
 		event scan : Seq( real )
 		junction j0
 		transition t0 {
 			from MoveForward
 			to j0
-			condition since ( C ) >= 5
+			condition since ( C ) >= RandomTime
 		}
 		transition t1 {
 			from j0
 			to MoveRight
+		condition scanresult ( 30 ) > scanresult ( 330 )
+		}
+		var scanresult : Seq( real )
+		transition t2 {
+			from j0
+			to MoveLeft
+			condition scanresult ( 30 ) <= scanresult ( 330 )
+		}
+		transition t3 {
+			from i0
+			to MoveForward
+		}
+	transition t4 {
+			from MoveLeft
+			to MoveForward
+			condition since ( C ) >= 5
+		}
+		transition t5 {
+			from MoveRight
+			to MoveForward
+			condition since ( C ) >= 5
 		}
 	}
 
