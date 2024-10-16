@@ -18,7 +18,7 @@ record Twist { linear : Vector3 angular : Vector3 } record Vector3 { x : real y 
 		state Rotate {
 			entry cmd_vel ( Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 1.5 |) |) ) ; # C
 		}
-	transition t0 {
+		transition t0 {
 			from i0
 			to MoveForwards
 		}
@@ -47,8 +47,7 @@ controller MovementRandomController {
 		state Rotate {
 			entry cmd_vel ( Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 1.5 |) |) ) ; # C
 		}
-		clock C
-	transition t0 {
+		transition t0 {
 			from MoveForwards
 			to Rotate
 			condition since ( C ) >= RandomTime
@@ -62,21 +61,18 @@ controller MovementRandomController {
 			from i0
 			to MoveForwards
 		}
+		clock C
 	}
 
 }
 
-module WeekThree {
-	rref rp_ref0 = TurtleBot3
-	cref ctrl_ref0 = MovementController
-cref ctrl_ref1 = MovementRandomController
-}
-
 controller MovementRandomAndIntelligently {
 	requires IOperations stm MoveForwardThenRotateIntelligently {
-		requires IOperations initial i0
-		clock C
-	state MoveForward {
+		requires IOperations var RandomTime : real
+		var scanresult : Seq( real )
+		event scan : Seq( real )
+		initial i0
+		state MoveForward {
 			entry cmd_vel ( Twist (| linear = Vector3 (| x = 1 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 0 |) |) ) ; scan ? scanresult ; # C
 		}
 		state MoveLeft {
@@ -85,8 +81,6 @@ controller MovementRandomAndIntelligently {
 		state MoveRight {
 			entry cmd_vel ( Twist (| linear = Vector3 (| x = 0 , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = 1.5 |) |) ) ; # C
 		}
-		var RandomTime : real
-		event scan : Seq( real )
 		junction j0
 		transition t0 {
 			from MoveForward
@@ -96,19 +90,18 @@ controller MovementRandomAndIntelligently {
 		transition t1 {
 			from j0
 			to MoveRight
-		condition scanresult ( 30 ) > scanresult ( 330 )
+			condition scanresult [ 30 ] > scanresult [ 330 ]
 		}
-		var scanresult : Seq( real )
 		transition t2 {
 			from j0
 			to MoveLeft
-			condition scanresult ( 30 ) <= scanresult ( 330 )
+			condition scanresult [ 30 ] <= scanresult [ 330 ]
 		}
 		transition t3 {
 			from i0
 			to MoveForward
 		}
-	transition t4 {
+		transition t4 {
 			from MoveLeft
 			to MoveForward
 			condition since ( C ) >= 5
@@ -118,7 +111,14 @@ controller MovementRandomAndIntelligently {
 			to MoveForward
 			condition since ( C ) >= 5
 		}
+		clock C
 	}
 
+}
+
+module WeekThree {
+	rref rp_ref0 = TurtleBot3
+	cref ctrl_ref0 = MovementController
+	cref ctrl_ref1 = MovementRandomController
 }
 
