@@ -1,0 +1,29 @@
+[0.654s] Invoking command in '/home/auro/robostar_repo/src/week_3/build/week_3': PYTHONPATH=/home/auro/robostar_repo/src/week_3/build/week_3/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/auro/robostar_repo/src/week_3/install/week_3/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/auro/robostar_repo/src/week_3/build/week_3/build --no-deps symlink_data
+[2.305s] running develop
+[2.402s] running egg_info
+[2.402s] creating week_3.egg-info
+[2.402s] writing week_3.egg-info/PKG-INFO
+[2.402s] writing dependency_links to week_3.egg-info/dependency_links.txt
+[2.402s] writing entry points to week_3.egg-info/entry_points.txt
+[2.402s] writing requirements to week_3.egg-info/requires.txt
+[2.402s] writing top-level names to week_3.egg-info/top_level.txt
+[2.403s] writing manifest file 'week_3.egg-info/SOURCES.txt'
+[2.404s] reading manifest file 'week_3.egg-info/SOURCES.txt'
+[2.404s] writing manifest file 'week_3.egg-info/SOURCES.txt'
+[2.405s] running build_ext
+[2.405s] Creating /home/auro/robostar_repo/src/week_3/install/week_3/lib/python3.10/site-packages/week-3.egg-link (link to .)
+[2.406s] Installing rviz_text_marker script to /home/auro/robostar_repo/src/week_3/install/week_3/lib/week_3
+[2.406s] Installing turtlebot3_fsm script to /home/auro/robostar_repo/src/week_3/install/week_3/lib/week_3
+[2.406s] Installing turtlebot3_fsm_rc script to /home/auro/robostar_repo/src/week_3/install/week_3/lib/week_3
+[2.406s] Installing turtlebot3_random_walk script to /home/auro/robostar_repo/src/week_3/install/week_3/lib/week_3
+[2.406s] 
+[2.406s] Installed /home/auro/robostar_repo/src/week_3/build/week_3
+[2.406s] running symlink_data
+[2.407s] creating /home/auro/robostar_repo/src/week_3/install/week_3/share/ament_index
+[2.407s] creating /home/auro/robostar_repo/src/week_3/install/week_3/share/ament_index/resource_index
+[2.407s] creating /home/auro/robostar_repo/src/week_3/install/week_3/share/ament_index/resource_index/packages
+[2.407s] symbolically linking /home/auro/robostar_repo/src/week_3/build/week_3/resource/week_3 -> /home/auro/robostar_repo/src/week_3/install/week_3/share/ament_index/resource_index/packages
+[2.407s] symbolically linking /home/auro/robostar_repo/src/week_3/build/week_3/package.xml -> /home/auro/robostar_repo/src/week_3/install/week_3/share/week_3
+[2.407s] creating /home/auro/robostar_repo/src/week_3/install/week_3/share/week_3/launch
+[2.407s] symbolically linking /home/auro/robostar_repo/src/week_3/build/week_3/launch/turtlebot3_simulation_launch.py -> /home/auro/robostar_repo/src/week_3/install/week_3/share/week_3/launch
+[2.425s] Invoked command in '/home/auro/robostar_repo/src/week_3/build/week_3' returned '0': PYTHONPATH=/home/auro/robostar_repo/src/week_3/build/week_3/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/auro/robostar_repo/src/week_3/install/week_3/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/auro/robostar_repo/src/week_3/build/week_3/build --no-deps symlink_data

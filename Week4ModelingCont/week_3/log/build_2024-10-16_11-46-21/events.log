@@ -1,0 +1,58 @@
+[0.000000] (-) TimerEvent: {}
+[0.003476] (week_3) JobQueued: {'identifier': 'week_3', 'dependencies': OrderedDict()}
+[0.004222] (week_3) JobStarted: {'identifier': 'week_3'}
+[0.090520] (-) TimerEvent: {}
+[0.191253] (-) TimerEvent: {}
+[0.291560] (-) TimerEvent: {}
+[0.392214] (-) TimerEvent: {}
+[0.494579] (-) TimerEvent: {}
+[0.596630] (-) TimerEvent: {}
+[0.654048] (week_3) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/auro/robostar_repo/src/week_3/build/week_3/build', '--no-deps', 'symlink_data'], 'cwd': '/home/auro/robostar_repo/src/week_3/build/week_3', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'PYTHONWARNINGS': 'ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources', 'LANGUAGE': 'en_GB:en', 'USER': 'auro', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/auro/turtlebot3_ws/install/turtlebot3_msgs/lib:/home/auro/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/lib:/home/auro/turtlebot3_ws/install/dynamixel_sdk/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:', 'HOME': '/home/auro', 'OLDPWD': '/home/auro/robostar_repo/src/week_3/week_3', 'DESKTOP_SESSION': 'ubuntu-xorg', 'GAZEBO_MASTER_URI': 'http://localhost:11345', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'DBUS_STARTER_BUS_TYPE': 'session', 'SYSTEMD_EXEC_PID': '2600', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus,guid=00eb784ff341284452771fcc670f822d', 'COLORTERM': 'truecolor', '_colcon_cd_root': '/opt/ros/humble/', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/auro/turtlebot3_ws/install', 'ROS_DISTRO': 'humble', 'GTK_IM_MODULE': 'ibus', 'LOGNAME': 'auro', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'auro', 'TERM': 'xterm-256color', 'GAZEBO_MODEL_PATH': '/usr/share/gazebo-11/models::/home/auro/turtlebot3_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'OGRE_RESOURCE_PATH': '/usr/lib/x86_64-linux-gnu/OGRE-1.9.0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/aurovm:@/tmp/.ICE-unix/2600,unix/aurovm:/tmp/.ICE-unix/2600', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/9c8adcf9_3c17_4998_9dec_f136805dd644', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_GB.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu-xorg', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.152', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '30', 'AMENT_PREFIX_PATH': '/home/auro/turtlebot3_ws/install/turtlebot3:/home/auro/turtlebot3_ws/install/turtlebot3_teleop:/home/auro/turtlebot3_ws/install/turtlebot3_simulations:/home/auro/turtlebot3_ws/install/turtlebot3_bringup:/home/auro/turtlebot3_ws/install/turtlebot3_node:/home/auro/turtlebot3_ws/install/turtlebot3_navigation2:/home/auro/turtlebot3_ws/install/turtlebot3_fake_node:/home/auro/turtlebot3_ws/install/turtlebot3_example:/home/auro/turtlebot3_ws/install/turtlebot3_msgs:/home/auro/turtlebot3_ws/install/turtlebot3_gazebo:/home/auro/turtlebot3_ws/install/turtlebot3_description:/home/auro/turtlebot3_ws/install/turtlebot3_cartographer:/home/auro/turtlebot3_ws/install/dynamixel_sdk_examples:/home/auro/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/auro/turtlebot3_ws/install/dynamixel_sdk:/opt/ros/humble', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu-xorg', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GAZEBO_RESOURCE_PATH': '/usr/share/gazebo-11:', 'GAZEBO_MODEL_DATABASE_URI': 'http://models.gazebosim.org', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/auro/robostar_repo/src/week_3/build/week_3', 'TURTLEBOT3_MODEL': 'waffle_pi', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg', 'GAZEBO_PLUGIN_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:', 'DBUS_STARTER_ADDRESS': 'unix:path=/run/user/1000/bus,guid=00eb784ff341284452771fcc670f822d', 'XDG_DATA_DIRS': '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/auro/robostar_repo/src/week_3/build/week_3/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/auro/robostar_repo/src/week_3/install/week_3/lib/python3.10/site-packages:/home/auro/turtlebot3_ws/build/turtlebot3_teleop:/home/auro/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.10/site-packages:/home/auro/turtlebot3_ws/build/turtlebot3_example:/home/auro/turtlebot3_ws/install/turtlebot3_example/lib/python3.10/site-packages:/home/auro/turtlebot3_ws/install/turtlebot3_msgs/local/lib/python3.10/dist-packages:/home/auro/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/auro/turtlebot3_ws/install/turtlebot3:/home/auro/turtlebot3_ws/install/turtlebot3_simulations:/home/auro/turtlebot3_ws/install/turtlebot3_bringup:/home/auro/turtlebot3_ws/install/turtlebot3_node:/home/auro/turtlebot3_ws/install/turtlebot3_navigation2:/home/auro/turtlebot3_ws/install/turtlebot3_fake_node:/home/auro/turtlebot3_ws/install/turtlebot3_msgs:/home/auro/turtlebot3_ws/install/turtlebot3_gazebo:/home/auro/turtlebot3_ws/install/turtlebot3_description:/home/auro/turtlebot3_ws/install/turtlebot3_cartographer:/home/auro/turtlebot3_ws/install/dynamixel_sdk_examples:/home/auro/turtlebot3_ws/install/dynamixel_sdk_custom_interfaces:/home/auro/turtlebot3_ws/install/dynamixel_sdk'}, 'shell': False}
+[0.697221] (-) TimerEvent: {}
+[0.798539] (-) TimerEvent: {}
+[0.902373] (-) TimerEvent: {}
+[1.005099] (-) TimerEvent: {}
+[1.107857] (-) TimerEvent: {}
+[1.210230] (-) TimerEvent: {}
+[1.313601] (-) TimerEvent: {}
+[1.415978] (-) TimerEvent: {}
+[1.518244] (-) TimerEvent: {}
+[1.620235] (-) TimerEvent: {}
+[1.722879] (-) TimerEvent: {}
+[1.825292] (-) TimerEvent: {}
+[1.931883] (-) TimerEvent: {}
+[2.033908] (-) TimerEvent: {}
+[2.136199] (-) TimerEvent: {}
+[2.238931] (-) TimerEvent: {}
+[2.308911] (week_3) StdoutLine: {'line': b'running develop\n'}
+[2.348117] (-) TimerEvent: {}
+[2.406051] (week_3) StdoutLine: {'line': b'running egg_info\n'}
+[2.406252] (week_3) StdoutLine: {'line': b'creating week_3.egg-info\n'}
+[2.406339] (week_3) StdoutLine: {'line': b'writing week_3.egg-info/PKG-INFO\n'}
+[2.406490] (week_3) StdoutLine: {'line': b'writing dependency_links to week_3.egg-info/dependency_links.txt\n'}
+[2.406680] (week_3) StdoutLine: {'line': b'writing entry points to week_3.egg-info/entry_points.txt\n'}
+[2.406761] (week_3) StdoutLine: {'line': b'writing requirements to week_3.egg-info/requires.txt\n'}
+[2.406836] (week_3) StdoutLine: {'line': b'writing top-level names to week_3.egg-info/top_level.txt\n'}
+[2.406910] (week_3) StdoutLine: {'line': b"writing manifest file 'week_3.egg-info/SOURCES.txt'\n"}
+[2.407884] (week_3) StdoutLine: {'line': b"reading manifest file 'week_3.egg-info/SOURCES.txt'\n"}
+[2.408311] (week_3) StdoutLine: {'line': b"writing manifest file 'week_3.egg-info/SOURCES.txt'\n"}
+[2.409566] (week_3) StdoutLine: {'line': b'running build_ext\n'}
+[2.409737] (week_3) StdoutLine: {'line': b'Creating /home/auro/robostar_repo/src/week_3/install/week_3/lib/python3.10/site-packages/week-3.egg-link (link to .)\n'}
+[2.410135] (week_3) StdoutLine: {'line': b'Installing rviz_text_marker script to /home/auro/robostar_repo/src/week_3/install/week_3/lib/week_3\n'}
+[2.410287] (week_3) StdoutLine: {'line': b'Installing turtlebot3_fsm script to /home/auro/robostar_repo/src/week_3/install/week_3/lib/week_3\n'}
+[2.410370] (week_3) StdoutLine: {'line': b'Installing turtlebot3_fsm_rc script to /home/auro/robostar_repo/src/week_3/install/week_3/lib/week_3\n'}
+[2.410548] (week_3) StdoutLine: {'line': b'Installing turtlebot3_random_walk script to /home/auro/robostar_repo/src/week_3/install/week_3/lib/week_3\n'}
+[2.410691] (week_3) StdoutLine: {'line': b'\n'}
+[2.410771] (week_3) StdoutLine: {'line': b'Installed /home/auro/robostar_repo/src/week_3/build/week_3\n'}
+[2.410848] (week_3) StdoutLine: {'line': b'running symlink_data\n'}
+[2.410923] (week_3) StdoutLine: {'line': b'creating /home/auro/robostar_repo/src/week_3/install/week_3/share/ament_index\n'}
+[2.410998] (week_3) StdoutLine: {'line': b'creating /home/auro/robostar_repo/src/week_3/install/week_3/share/ament_index/resource_index\n'}
+[2.411072] (week_3) StdoutLine: {'line': b'creating /home/auro/robostar_repo/src/week_3/install/week_3/share/ament_index/resource_index/packages\n'}
+[2.411147] (week_3) StdoutLine: {'line': b'symbolically linking /home/auro/robostar_repo/src/week_3/build/week_3/resource/week_3 -> /home/auro/robostar_repo/src/week_3/install/week_3/share/ament_index/resource_index/packages\n'}
+[2.411223] (week_3) StdoutLine: {'line': b'symbolically linking /home/auro/robostar_repo/src/week_3/build/week_3/package.xml -> /home/auro/robostar_repo/src/week_3/install/week_3/share/week_3\n'}
+[2.411299] (week_3) StdoutLine: {'line': b'creating /home/auro/robostar_repo/src/week_3/install/week_3/share/week_3/launch\n'}
+[2.411373] (week_3) StdoutLine: {'line': b'symbolically linking /home/auro/robostar_repo/src/week_3/build/week_3/launch/turtlebot3_simulation_launch.py -> /home/auro/robostar_repo/src/week_3/install/week_3/share/week_3/launch\n'}
+[2.429637] (week_3) CommandEnded: {'returncode': 0}
+[2.448735] (-) TimerEvent: {}
+[2.452473] (week_3) JobEnded: {'identifier': 'week_3', 'rc': 0}
+[2.452897] (-) EventReactorShutdown: {}
