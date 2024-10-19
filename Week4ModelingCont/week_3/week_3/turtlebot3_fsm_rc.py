@@ -52,11 +52,15 @@ class TurtleBot3FSMRC(Node):
         
         # Output
         self.publisher = self.create_publisher(Twist, '/cmd_vel', 10)
+        self.listener = self.create_subscription(Twist, '/odom', self.listener_callback, 10)
 
         # Periodic callback for executing FSM
         self.timer_period = 0.1 # 100 milliseconds = 10 Hz for the control loop
         self.time_unit = 1 # 1 second is the value chosen for one 'time unit'
         self.timer = self.create_timer(self.timer_period, self.control_loop)
+
+    def listener_callback(self, msg):
+        self.get_logger().info(msg)
 
     def increment_clocks(self):
         self.clock_C += 1
@@ -91,7 +95,7 @@ class TurtleBot3FSMRC(Node):
                     case Action.ENTRY:
                         # Entry action
                         self.get_logger().info("Entering state: 'FORWARD'")
-                        self.move(lvel, 0)
+                        self.move(lvel, 0.0)
 
                         self.action = Action.INTERRUPTABLE
                     case Action.INTERRUPTABLE:
@@ -112,7 +116,7 @@ class TurtleBot3FSMRC(Node):
                     case Action.ENTRY:
                         # Entry action
                         self.get_logger().info("Entering state: 'TURNING'")
-                        self.move(0, avel)
+                        self.move(0.0, avel)
 
                         self.action = Action.INTERRUPTABLE
                     case Action.INTERRUPTABLE:

@@ -6,10 +6,13 @@ interface IOperations {
 
 interface IEvents {
 	event scan : Seq( real )
+event odom : Seq( Vector3 )
 }
 
 interface ICustomOperations {
 	move ( lvel : real , avel : real )
+
+	turn ( angle : real )
 }
 
 robotic platform TurtleBot {
@@ -31,7 +34,7 @@ datatype Vector3 {
 controller Driving {
 	requires IOperations 
 	stm TurtleBot3FSMRC {
-		const lvel : real, avel : real
+		const lvel : real , angle : real
 		requires IOperations initial i0
 		state DrivingAround {
 			initial i0
@@ -39,7 +42,7 @@ controller Driving {
 				entry move ( lvel , 0 )
 			}
 			state Turning {
-				entry move ( 0 , avel )
+				entry turn ( angle )
 			}
 			transition t0 {
 				from i0
@@ -60,38 +63,100 @@ controller Driving {
 			}
 		}
 
-		transition t0 {
-			from i0
+		transition t1 {
+			from IntelligentTurn
 			to DrivingAround
 		}
-		state s0 {
-		}
-		uses ICustomOperations requires ICustomOperations
+		requires ICustomOperations
 		clock C
 
+	uses IEvents var scanResult : Seq( real )
+		state IntelligentTurn {
+			initial i0
+			final f0
+			state MoveRight {
+				entry angle = 45.0
+			}
+			state MoveLeft {
+				entry angle = 315.0
+			}
+			transition t0 {
+				from i0
+				to MoveRight
+				condition scanResult ( 45 ) >= scanResult ( 315 )
+			}
+			transition t1 {
+				from MoveRight
+				to f0
+			}
+			transition t2 {
+				from i0
+				to MoveLeft
+				condition scanResult ( 45 ) < scanResult ( 315 )
+			}
+			transition t3 {
+				from MoveLeft
+				to f0
+			}
+		}
+		junction j0
+		transition t0 {
+			from i0
+			to j0
+		}
+		transition t2 {
+			from j0
+			to IntelligentTurn
+			trigger scan ? scanResult
+		}
+		transition t3 {
+			from DrivingAround
+			to j0
+		}
 	}
 
 	requires ICustomOperations }
-
-module Module {
-	rref rp_ref0 = TurtleBot
-	cref ctrl_ref0 = Driving
-}
 
 operation move ( lvel : real
 , avel : real
 ) {
 	requires IOperations initial i0
-	final f0
 	state move {
 		entry cmd_vel ( Twist (| linear = Vector3 (| x = lvel , y = 0 , z = 0 |) , angular = Vector3 (| x = 0 , y = 0 , z = avel |) |) )
 	}
+	final f0
 	transition t0 {
 		from i0
 		to move
 	}
 	transition t1 {
 		from move
+		to f0
+	}
+}
+
+operation turn ( angle : real
+) {
+	uses IEvents var odomRead : Seq( Vector3 )
+	initial i0
+	junction j0
+	state s0 {
+	entry move ( 0 , 0 )
+	}
+	transition t0 {
+		from i0
+		to j0
+		trigger odom ? odomRead
+	}
+	transition t1 {
+		from j0
+		to s0
+	condition since ( C ) * odomRead ( 0 ( 2 ) ) >= angle
+	}
+	clock C
+requires ICustomOperations final f0
+	transition t2 {
+		from s0
 		to f0
 	}
 }
