@@ -6,13 +6,14 @@ interface IOperations {
 
 interface IEvents {
 	event scan : Seq( real )
-event odom : Seq( Vector3 )
+
+	event odom : Quaternion
 }
 
 interface ICustomOperations {
 	move ( lvel : real , avel : real )
 
-	turn ( angle : real )
+	turn (  angle : real , avel : real )
 }
 
 robotic platform TurtleBot {
@@ -29,7 +30,7 @@ datatype Vector3 {
 	x : real 
 	y : real 
 	z : real
-} 
+} datatype Quaternion { x : real y : real z : real w : real } 
 
 controller Driving {
 	requires IOperations 
@@ -37,18 +38,13 @@ controller Driving {
 		const lvel : real , angle : real
 		requires IOperations initial i0
 		state DrivingAround {
-			initial i0
 			state Forward {
 				entry move ( lvel , 0 )
 			}
 			state Turning {
 				entry turn ( angle )
 			}
-			transition t0 {
-				from i0
-				to Forward
-				action # C
-			}
+
 			transition t1 {
 				from Forward
 				to Turning
@@ -60,6 +56,12 @@ controller Driving {
 				to Forward
 				condition since ( C ) > 1
 				action # C
+			}
+		initial i0
+			transition t0 {
+				from i0
+				to Turning
+				# C
 			}
 		}
 
@@ -135,14 +137,42 @@ operation move ( lvel : real
 	}
 }
 
-operation turn ( angle : real
+operation turnApprox ( 
+angle : real
+, avel : real
 ) {
-	uses IEvents var odomRead : Seq( Vector3 )
-	initial i0
+	requires ICustomOperations initial i0
 	junction j0
-	state s0 {
+	state halt {
 	entry move ( 0 , 0 )
 	}
+
+	transition t1 {
+		from j0
+		to halt
+	condition avel * since ( C ) <= angle
+	}
+	clock C
+final f0
+	transition t2 {
+		from halt
+		to f0
+	}
+transition t0 {
+		from i0
+		to j0
+	}
+}
+
+operation turnIntel ( angle : real
+) {
+	uses IEvents requires ICustomOperations var odomRead : Quaternion
+	initial i0
+	junction j0
+	state halt {
+		entry move ( 0 , 0 )
+	}
+	final f0
 	transition t0 {
 		from i0
 		to j0
@@ -150,13 +180,11 @@ operation turn ( angle : real
 	}
 	transition t1 {
 		from j0
-		to s0
-	condition since ( C ) * odomRead ( 0 ( 2 ) ) >= angle
+		to halt
+		condition odomRead <= angle
 	}
-	clock C
-requires ICustomOperations final f0
 	transition t2 {
-		from s0
+		from halt
 		to f0
 	}
 }
